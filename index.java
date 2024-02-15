@@ -1,3 +1,52 @@
+class Customer {
+    public String customerName;
+    public String customerType;
+
+    Customer ( String name ) {
+        customerName = name;
+    }
+
+    public void setCustomerName ( String name ) {
+        customerName = name;
+    }
+
+    public void setCustomerType ( String type ) {
+        customerType = type;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getCustomerType () {
+        return customerType;
+    }
+}
+
+class Sale {
+    Customer customer;
+    String date;
+    double serviceExpense;
+    double setProductExpense;
+
+    Sale ( Customer obj, String date ) {
+        customer = obj;
+        this.date = date;
+    }
+
+    public void setServiceExpense ( double serviceExpense ) {
+        this.serviceExpense = serviceExpense;
+    }
+
+    public void setProductExpense ( double setProductExpense ) {
+        this.setProductExpense = setProductExpense;
+    }
+
+    public void displayInfo() {
+
+    }
+}
+
 public class index {
     public static void main( String args[] ) {
         Customer c1 = new Customer("Sovisal");
