@@ -1,6 +1,6 @@
 class Customer {
-    public String customerName;
-    public String customerType;
+    public static String customerName;
+    public static String customerType;
 
     Customer ( String name ) {
         customerName = name;
@@ -50,9 +50,9 @@ class Sale {
         int discount = 0;
 
         if ( customer.getCustomerType().equals( "Premium" )) discount = 20;
-        else if ( customer.getCustomerName().equals( "Gold" )) discount = 15;
-        else if ( customer.getCustomerName().equals( "Silver" )) discount = 10;
-        else if ( customer.getCustomerName().equals( "Normal" )) discount = 0;
+        else if ( customer.getCustomerType().equals( "Gold" )) discount = 15;
+        else if ( customer.getCustomerType().equals( "Silver" )) discount = 10;
+        else if ( customer.getCustomerType().equals( "Normal" )) discount = 0;
 
         return ( serviceExpense / 100 ) * discount;
     }
@@ -61,19 +61,23 @@ class Sale {
         int discount = 0;
 
         if ( customer.getCustomerType().equals( "Premium" )
-                || customer.getCustomerName().equals( "Gold" )
-                    || customer.getCustomerName().equals( "Silver" )) discount = 10;
-        else if ( customer.getCustomerName().equals( "Normal" )) discount = 0;
+                || customer.getCustomerType().equals( "Gold" )
+                    || customer.getCustomerType().equals( "Silver" )) discount = 10;
+        else if ( customer.getCustomerType().equals( "Normal" )) discount = 0;
 
         return ( serviceExpense / 100 ) * discount;
     }
 
     public double getTotalExpense () {
-        return 0;
+        return getProductExpense() + getServiceExpense();
     }
 
     public void displayInfo() {
-
+        System.out.println( "Customer info:" );
+        System.out.println( "Customer name   : " + customer.getCustomerName());
+        System.out.println( "Customer type   : " + customer.getCustomerType());
+        System.out.println( "Service expense : " + getServiceExpense());
+        System.out.println( "Product expense : " + getProductExpense());
     }
 }
 
@@ -108,6 +112,5 @@ public class index {
         sale_c4.setProductExpense(100);
         sale_c4.setServiceExpense(100);
         sale_c4.displayInfo();
-
     }
 }
