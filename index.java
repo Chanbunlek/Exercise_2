@@ -27,7 +27,7 @@ class Sale {
     Customer customer;
     String date;
     double serviceExpense;
-    double setProductExpense;
+    double productExpense;
 
     Sale ( Customer obj, String date ) {
         customer = obj;
@@ -39,7 +39,37 @@ class Sale {
     }
 
     public void setProductExpense ( double setProductExpense ) {
-        this.setProductExpense = setProductExpense;
+        this.productExpense = setProductExpense;
+    }
+
+    public String getDate () {
+        return date;
+    }
+
+    public double getServiceExpense () {
+        int discount = 0;
+
+        if ( customer.getCustomerType().equals( "Premium" )) discount = 20;
+        else if ( customer.getCustomerName().equals( "Gold" )) discount = 15;
+        else if ( customer.getCustomerName().equals( "Silver" )) discount = 10;
+        else if ( customer.getCustomerName().equals( "Normal" )) discount = 0;
+
+        return ( serviceExpense / 100 ) * discount;
+    }
+
+    public double getProductExpense () {
+        int discount = 0;
+
+        if ( customer.getCustomerType().equals( "Premium" )
+                || customer.getCustomerName().equals( "Gold" )
+                    || customer.getCustomerName().equals( "Silver" )) discount = 10;
+        else if ( customer.getCustomerName().equals( "Normal" )) discount = 0;
+
+        return ( serviceExpense / 100 ) * discount;
+    }
+
+    public double getTotalExpense () {
+        return 0;
     }
 
     public void displayInfo() {
